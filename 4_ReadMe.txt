@@ -1,0 +1,1 @@
+Go to Google Colab and click on File -> Upload Notebook and select CS24M015_Assignment_4.ipynb. You might execute each cell in order to avoid errors and ensure dependencies are met.

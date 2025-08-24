@@ -1,0 +1,703 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.w3.org/2002/07/owl#> .
+
+[ rdf:type owl:Ontology
+ ] .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  TransactionDate
+<TransactionDate> rdf:type owl:AnnotationProperty .
+
+
+###  TransactionStatus
+<TransactionStatus> rdf:type owl:AnnotationProperty .
+
+
+###  belongsToSector
+<belongsToSector> rdf:type owl:AnnotationProperty .
+
+
+###  engagesIn
+<engagesIn> rdf:type owl:AnnotationProperty .
+
+
+###  hasID
+<hasID> rdf:type owl:AnnotationProperty .
+
+
+###  hasName
+<hasName> rdf:type owl:AnnotationProperty .
+
+
+###  hasPrice
+<hasPrice> rdf:type owl:AnnotationProperty .
+
+
+###  hasQuantity
+<hasQuantity> rdf:type owl:AnnotationProperty .
+
+
+###  hasType
+<hasType> rdf:type owl:AnnotationProperty .
+
+
+###  issuedBy
+<issuedBy> rdf:type owl:AnnotationProperty .
+
+
+###  observesTrend
+<observesTrend> rdf:type owl:AnnotationProperty .
+
+
+###  occursDuring
+<occursDuring> rdf:type owl:AnnotationProperty .
+
+
+###  placesOrder
+<placesOrder> rdf:type owl:AnnotationProperty .
+
+
+###  resultsIn
+<resultsIn> rdf:type owl:AnnotationProperty .
+
+
+###  trackedBy
+<trackedBy> rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Datatypes
+#################################################################
+
+###  http://www.w3.org/2001/XMLSchema#date
+xsd:date rdf:type rdfs:Datatype .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  file:/C:/Users/Arnav/Documents/stockmarket.owl#belongsToSector
+<file:/C:/Users/Arnav/Documents/stockmarket.owl#belongsToSector> rdf:type owl:ObjectProperty ;
+                                                                 rdfs:domain <file:/C:/Users/Arnav/Documents/stockmarket.owl#Company> ;
+                                                                 rdfs:range <file:/C:/Users/Arnav/Documents/stockmarket.owl#Sector> .
+
+
+###  file:/C:/Users/Arnav/Documents/stockmarket.owl#contains
+<file:/C:/Users/Arnav/Documents/stockmarket.owl#contains> rdf:type owl:ObjectProperty ;
+                                                          rdfs:domain <file:/C:/Users/Arnav/Documents/stockmarket.owl#Portfolio> ;
+                                                          rdfs:range <file:/C:/Users/Arnav/Documents/stockmarket.owl#FinancialInstrument> .
+
+
+###  file:/C:/Users/Arnav/Documents/stockmarket.owl#earnsProfit
+<file:/C:/Users/Arnav/Documents/stockmarket.owl#earnsProfit> rdf:type owl:ObjectProperty ;
+                                                             rdfs:domain <file:/C:/Users/Arnav/Documents/stockmarket.owl#Investor> ;
+                                                             rdfs:range <file:/C:/Users/Arnav/Documents/stockmarket.owl#Profit> .
+
+
+###  file:/C:/Users/Arnav/Documents/stockmarket.owl#enforcesRule
+<file:/C:/Users/Arnav/Documents/stockmarket.owl#enforcesRule> rdf:type owl:ObjectProperty ;
+                                                              rdfs:domain <file:/C:/Users/Arnav/Documents/stockmarket.owl#RegulatoryBody> ;
+                                                              rdfs:range <file:/C:/Users/Arnav/Documents/stockmarket.owl#ComplianceRule> .
+
+
+###  file:/C:/Users/Arnav/Documents/stockmarket.owl#engagesIn
+<file:/C:/Users/Arnav/Documents/stockmarket.owl#engagesIn> rdf:type owl:ObjectProperty ;
+                                                           rdfs:domain <file:/C:/Users/Arnav/Documents/stockmarket.owl#Investor> ;
+                                                           rdfs:range [ rdf:type owl:Class ;
+                                                                        owl:unionOf ( <file:/C:/Users/Arnav/Documents/stockmarket.owl#MarginTrading>
+                                                                                      <file:/C:/Users/Arnav/Documents/stockmarket.owl#ShortSelling>
+                                                                                    )
+                                                                      ] .
+
+
+###  file:/C:/Users/Arnav/Documents/stockmarket.owl#executesTransaction
+<file:/C:/Users/Arnav/Documents/stockmarket.owl#executesTransaction> rdf:type owl:ObjectProperty ;
+                                                                     rdfs:domain <file:/C:/Users/Arnav/Documents/stockmarket.owl#TradeOrder> ;
+                                                                     rdfs:range <file:/C:/Users/Arnav/Documents/stockmarket.owl#Transaction> .
+
+
+###  file:/C:/Users/Arnav/Documents/stockmarket.owl#facilitatesTrade
+<file:/C:/Users/Arnav/Documents/stockmarket.owl#facilitatesTrade> rdf:type owl:ObjectProperty ;
+                                                                  rdfs:domain <file:/C:/Users/Arnav/Documents/stockmarket.owl#Broker> ;
+                                                                  rdfs:range <file:/C:/Users/Arnav/Documents/stockmarket.owl#TradeOrder> .
+
+
+###  file:/C:/Users/Arnav/Documents/stockmarket.owl#hasIPO
+<file:/C:/Users/Arnav/Documents/stockmarket.owl#hasIPO> rdf:type owl:ObjectProperty ;
+                                                        rdfs:domain <file:/C:/Users/Arnav/Documents/stockmarket.owl#PublicCompany> ;
+                                                        rdfs:range <file:/C:/Users/Arnav/Documents/stockmarket.owl#IPO> .
+
+
+###  file:/C:/Users/Arnav/Documents/stockmarket.owl#hasInvestor
+<file:/C:/Users/Arnav/Documents/stockmarket.owl#hasInvestor> rdf:type owl:ObjectProperty ;
+                                                             rdfs:domain <file:/C:/Users/Arnav/Documents/stockmarket.owl#StockMarket> ;
+                                                             rdfs:range <file:/C:/Users/Arnav/Documents/stockmarket.owl#Investor> .
+
+
+###  file:/C:/Users/Arnav/Documents/stockmarket.owl#hasRisk
+<file:/C:/Users/Arnav/Documents/stockmarket.owl#hasRisk> rdf:type owl:ObjectProperty ;
+                                                         rdfs:domain <file:/C:/Users/Arnav/Documents/stockmarket.owl#FinancialInstrument> ;
+                                                         rdfs:range <file:/C:/Users/Arnav/Documents/stockmarket.owl#RiskLevel> .
+
+
+###  file:/C:/Users/Arnav/Documents/stockmarket.owl#holdsPortfolio
+<file:/C:/Users/Arnav/Documents/stockmarket.owl#holdsPortfolio> rdf:type owl:ObjectProperty ;
+                                                                rdfs:domain <file:/C:/Users/Arnav/Documents/stockmarket.owl#Investor> ;
+                                                                rdfs:range <file:/C:/Users/Arnav/Documents/stockmarket.owl#Portfolio> .
+
+
+###  file:/C:/Users/Arnav/Documents/stockmarket.owl#imposesPenalty
+<file:/C:/Users/Arnav/Documents/stockmarket.owl#imposesPenalty> rdf:type owl:ObjectProperty ;
+                                                                rdfs:domain <file:/C:/Users/Arnav/Documents/stockmarket.owl#RegulatoryBody> ;
+                                                                rdfs:range <file:/C:/Users/Arnav/Documents/stockmarket.owl#Penalty> .
+
+
+###  file:/C:/Users/Arnav/Documents/stockmarket.owl#isTradedAt
+<file:/C:/Users/Arnav/Documents/stockmarket.owl#isTradedAt> rdf:type owl:ObjectProperty ;
+                                                            rdfs:domain <file:/C:/Users/Arnav/Documents/stockmarket.owl#FinancialInstrument> ;
+                                                            rdfs:range <file:/C:/Users/Arnav/Documents/stockmarket.owl#StockMarket> .
+
+
+###  file:/C:/Users/Arnav/Documents/stockmarket.owl#issuedBy
+<file:/C:/Users/Arnav/Documents/stockmarket.owl#issuedBy> rdf:type owl:ObjectProperty ;
+                                                          rdfs:domain <file:/C:/Users/Arnav/Documents/stockmarket.owl#FinancialInstrument> ;
+                                                          rdfs:range <file:/C:/Users/Arnav/Documents/stockmarket.owl#Company> .
+
+
+###  file:/C:/Users/Arnav/Documents/stockmarket.owl#issuesStock
+<file:/C:/Users/Arnav/Documents/stockmarket.owl#issuesStock> rdf:type owl:ObjectProperty ;
+                                                             rdfs:domain <file:/C:/Users/Arnav/Documents/stockmarket.owl#Company> ;
+                                                             rdfs:range <file:/C:/Users/Arnav/Documents/stockmarket.owl#Share> .
+
+
+###  file:/C:/Users/Arnav/Documents/stockmarket.owl#observesTrend
+<file:/C:/Users/Arnav/Documents/stockmarket.owl#observesTrend> rdf:type owl:ObjectProperty ;
+                                                               rdfs:domain <file:/C:/Users/Arnav/Documents/stockmarket.owl#MarketIndex> ;
+                                                               rdfs:range <file:/C:/Users/Arnav/Documents/stockmarket.owl#MarketTrend> .
+
+
+###  file:/C:/Users/Arnav/Documents/stockmarket.owl#occursDuring
+<file:/C:/Users/Arnav/Documents/stockmarket.owl#occursDuring> rdf:type owl:ObjectProperty ;
+                                                              rdfs:domain <file:/C:/Users/Arnav/Documents/stockmarket.owl#Transaction> ;
+                                                              rdfs:range <file:/C:/Users/Arnav/Documents/stockmarket.owl#MarketCondition> .
+
+
+###  file:/C:/Users/Arnav/Documents/stockmarket.owl#operatesInMarket
+<file:/C:/Users/Arnav/Documents/stockmarket.owl#operatesInMarket> rdf:type owl:ObjectProperty ;
+                                                                  rdfs:domain <file:/C:/Users/Arnav/Documents/stockmarket.owl#Company> ;
+                                                                  rdfs:range <file:/C:/Users/Arnav/Documents/stockmarket.owl#GeographicMarket> .
+
+
+###  file:/C:/Users/Arnav/Documents/stockmarket.owl#paysDividend
+<file:/C:/Users/Arnav/Documents/stockmarket.owl#paysDividend> rdf:type owl:ObjectProperty ;
+                                                              rdfs:domain <file:/C:/Users/Arnav/Documents/stockmarket.owl#Company> ;
+                                                              rdfs:range <file:/C:/Users/Arnav/Documents/stockmarket.owl#Dividend> .
+
+
+###  file:/C:/Users/Arnav/Documents/stockmarket.owl#penalizes
+<file:/C:/Users/Arnav/Documents/stockmarket.owl#penalizes> rdf:type owl:ObjectProperty ;
+                                                           rdfs:domain <file:/C:/Users/Arnav/Documents/stockmarket.owl#Penalty> ;
+                                                           rdfs:range [ rdf:type owl:Class ;
+                                                                        owl:unionOf ( <file:/C:/Users/Arnav/Documents/stockmarket.owl#Broker>
+                                                                                      <file:/C:/Users/Arnav/Documents/stockmarket.owl#Company>
+                                                                                      <file:/C:/Users/Arnav/Documents/stockmarket.owl#Investor>
+                                                                                    )
+                                                                      ] .
+
+
+###  file:/C:/Users/Arnav/Documents/stockmarket.owl#placesOrder
+<file:/C:/Users/Arnav/Documents/stockmarket.owl#placesOrder> rdf:type owl:ObjectProperty ;
+                                                             rdfs:domain <file:/C:/Users/Arnav/Documents/stockmarket.owl#Investor> ;
+                                                             rdfs:range <file:/C:/Users/Arnav/Documents/stockmarket.owl#TradeOrder> .
+
+
+###  file:/C:/Users/Arnav/Documents/stockmarket.owl#resultsIn
+<file:/C:/Users/Arnav/Documents/stockmarket.owl#resultsIn> rdf:type owl:ObjectProperty ;
+                                                           rdfs:domain <file:/C:/Users/Arnav/Documents/stockmarket.owl#TradeOrder> ;
+                                                           rdfs:range <file:/C:/Users/Arnav/Documents/stockmarket.owl#Transaction> .
+
+
+###  file:/C:/Users/Arnav/Documents/stockmarket.owl#suffersLoss
+<file:/C:/Users/Arnav/Documents/stockmarket.owl#suffersLoss> rdf:type owl:ObjectProperty ;
+                                                             rdfs:domain <file:/C:/Users/Arnav/Documents/stockmarket.owl#Investor> ;
+                                                             rdfs:range <file:/C:/Users/Arnav/Documents/stockmarket.owl#Loss> .
+
+
+###  file:/C:/Users/Arnav/Documents/stockmarket.owl#trackedBy
+<file:/C:/Users/Arnav/Documents/stockmarket.owl#trackedBy> rdf:type owl:ObjectProperty ;
+                                                           rdfs:domain <file:/C:/Users/Arnav/Documents/stockmarket.owl#FinancialInstrument> ;
+                                                           rdfs:range <file:/C:/Users/Arnav/Documents/stockmarket.owl#MarketIndex> .
+
+
+###  file:/C:/Users/Arnav/Documents/stockmarket.owl#violatesRule
+<file:/C:/Users/Arnav/Documents/stockmarket.owl#violatesRule> rdf:type owl:ObjectProperty ;
+                                                              rdfs:domain [ rdf:type owl:Class ;
+                                                                            owl:unionOf ( <file:/C:/Users/Arnav/Documents/stockmarket.owl#Broker>
+                                                                                          <file:/C:/Users/Arnav/Documents/stockmarket.owl#Company>
+                                                                                          <file:/C:/Users/Arnav/Documents/stockmarket.owl#Investor>
+                                                                                        )
+                                                                          ] ;
+                                                              rdfs:range <file:/C:/Users/Arnav/Documents/stockmarket.owl#ComplianceRule> .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  file:/C:/Users/Arnav/Documents/stockmarket.owl#hasDate
+<file:/C:/Users/Arnav/Documents/stockmarket.owl#hasDate> rdf:type owl:DatatypeProperty ;
+                                                         rdfs:domain <file:/C:/Users/Arnav/Documents/stockmarket.owl#Transaction> ;
+                                                         rdfs:range xsd:date .
+
+
+###  file:/C:/Users/Arnav/Documents/stockmarket.owl#hasPrice
+<file:/C:/Users/Arnav/Documents/stockmarket.owl#hasPrice> rdf:type owl:DatatypeProperty ;
+                                                          rdfs:domain <file:/C:/Users/Arnav/Documents/stockmarket.owl#TradeOrder> ;
+                                                          rdfs:range xsd:decimal .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  file:/C:/Users/Arnav/Documents/stockmarket.owl#AnnualDividend
+<file:/C:/Users/Arnav/Documents/stockmarket.owl#AnnualDividend> rdf:type owl:Class ;
+                                                                rdfs:subClassOf <file:/C:/Users/Arnav/Documents/stockmarket.owl#Dividend> .
+
+
+###  file:/C:/Users/Arnav/Documents/stockmarket.owl#BalancedMutualFund
+<file:/C:/Users/Arnav/Documents/stockmarket.owl#BalancedMutualFund> rdf:type owl:Class ;
+                                                                    rdfs:subClassOf <file:/C:/Users/Arnav/Documents/stockmarket.owl#MutualFund> .
+
+
+###  file:/C:/Users/Arnav/Documents/stockmarket.owl#BearMarket
+<file:/C:/Users/Arnav/Documents/stockmarket.owl#BearMarket> rdf:type owl:Class ;
+                                                            rdfs:subClassOf <file:/C:/Users/Arnav/Documents/stockmarket.owl#MarketCondition> .
+
+
+###  file:/C:/Users/Arnav/Documents/stockmarket.owl#Bond
+<file:/C:/Users/Arnav/Documents/stockmarket.owl#Bond> rdf:type owl:Class ;
+                                                      rdfs:subClassOf <file:/C:/Users/Arnav/Documents/stockmarket.owl#FinancialInstrument> .
+
+
+###  file:/C:/Users/Arnav/Documents/stockmarket.owl#Broker
+<file:/C:/Users/Arnav/Documents/stockmarket.owl#Broker> rdf:type owl:Class .
+
+
+###  file:/C:/Users/Arnav/Documents/stockmarket.owl#BullMarket
+<file:/C:/Users/Arnav/Documents/stockmarket.owl#BullMarket> rdf:type owl:Class ;
+                                                            rdfs:subClassOf <file:/C:/Users/Arnav/Documents/stockmarket.owl#MarketCondition> .
+
+
+###  file:/C:/Users/Arnav/Documents/stockmarket.owl#Company
+<file:/C:/Users/Arnav/Documents/stockmarket.owl#Company> rdf:type owl:Class ;
+                                                         rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty <file:/C:/Users/Arnav/Documents/stockmarket.owl#issuesStock> ;
+                                                                           owl:someValuesFrom <file:/C:/Users/Arnav/Documents/stockmarket.owl#Share>
+                                                                         ] ,
+                                                                         [ rdf:type owl:Restriction ;
+                                                                           owl:onProperty <file:/C:/Users/Arnav/Documents/stockmarket.owl#paysDividend> ;
+                                                                           owl:someValuesFrom <file:/C:/Users/Arnav/Documents/stockmarket.owl#Dividend>
+                                                                         ] .
+
+
+###  file:/C:/Users/Arnav/Documents/stockmarket.owl#ComplianceRule
+<file:/C:/Users/Arnav/Documents/stockmarket.owl#ComplianceRule> rdf:type owl:Class .
+
+
+###  file:/C:/Users/Arnav/Documents/stockmarket.owl#DebtFund
+<file:/C:/Users/Arnav/Documents/stockmarket.owl#DebtFund> rdf:type owl:Class ;
+                                                          rdfs:subClassOf <file:/C:/Users/Arnav/Documents/stockmarket.owl#MutualFund> .
+
+
+###  file:/C:/Users/Arnav/Documents/stockmarket.owl#DiscountBroker
+<file:/C:/Users/Arnav/Documents/stockmarket.owl#DiscountBroker> rdf:type owl:Class ;
+                                                                rdfs:subClassOf <file:/C:/Users/Arnav/Documents/stockmarket.owl#Broker> .
+
+
+###  file:/C:/Users/Arnav/Documents/stockmarket.owl#Dividend
+<file:/C:/Users/Arnav/Documents/stockmarket.owl#Dividend> rdf:type owl:Class .
+
+
+###  file:/C:/Users/Arnav/Documents/stockmarket.owl#DomesticInstitutionalInvestor
+<file:/C:/Users/Arnav/Documents/stockmarket.owl#DomesticInstitutionalInvestor> rdf:type owl:Class ;
+                                                                               rdfs:subClassOf <file:/C:/Users/Arnav/Documents/stockmarket.owl#Investor> .
+
+
+###  file:/C:/Users/Arnav/Documents/stockmarket.owl#DownwardTrend
+<file:/C:/Users/Arnav/Documents/stockmarket.owl#DownwardTrend> rdf:type owl:Class ;
+                                                               rdfs:subClassOf <file:/C:/Users/Arnav/Documents/stockmarket.owl#MarketTrend> .
+
+
+###  file:/C:/Users/Arnav/Documents/stockmarket.owl#ELSSFund
+<file:/C:/Users/Arnav/Documents/stockmarket.owl#ELSSFund> rdf:type owl:Class ;
+                                                          rdfs:subClassOf <file:/C:/Users/Arnav/Documents/stockmarket.owl#MutualFund> .
+
+
+###  file:/C:/Users/Arnav/Documents/stockmarket.owl#EquityMutualFund
+<file:/C:/Users/Arnav/Documents/stockmarket.owl#EquityMutualFund> rdf:type owl:Class ;
+                                                                  rdfs:subClassOf <file:/C:/Users/Arnav/Documents/stockmarket.owl#MutualFund> .
+
+
+###  file:/C:/Users/Arnav/Documents/stockmarket.owl#FailedTransaction
+<file:/C:/Users/Arnav/Documents/stockmarket.owl#FailedTransaction> rdf:type owl:Class ;
+                                                                   rdfs:subClassOf <file:/C:/Users/Arnav/Documents/stockmarket.owl#Transaction> .
+
+
+###  file:/C:/Users/Arnav/Documents/stockmarket.owl#FinancialInstrument
+<file:/C:/Users/Arnav/Documents/stockmarket.owl#FinancialInstrument> rdf:type owl:Class ;
+                                                                     owl:equivalentClass [ rdf:type owl:Class ;
+                                                                                           owl:unionOf ( [ rdf:type owl:Restriction ;
+                                                                                                           owl:onProperty <file:/C:/Users/Arnav/Documents/stockmarket.owl#hasRisk> ;
+                                                                                                           owl:someValuesFrom <file:/C:/Users/Arnav/Documents/stockmarket.owl#RiskLevel>
+                                                                                                         ]
+                                                                                                         [ rdf:type owl:Restriction ;
+                                                                                                           owl:onProperty <file:/C:/Users/Arnav/Documents/stockmarket.owl#trackedBy> ;
+                                                                                                           owl:someValuesFrom <file:/C:/Users/Arnav/Documents/stockmarket.owl#MarketIndex>
+                                                                                                         ]
+                                                                                                       )
+                                                                                         ] .
+
+
+###  file:/C:/Users/Arnav/Documents/stockmarket.owl#ForeignInstitutionalInvestor
+<file:/C:/Users/Arnav/Documents/stockmarket.owl#ForeignInstitutionalInvestor> rdf:type owl:Class ;
+                                                                              rdfs:subClassOf <file:/C:/Users/Arnav/Documents/stockmarket.owl#Investor> .
+
+
+###  file:/C:/Users/Arnav/Documents/stockmarket.owl#FullServiceBroker
+<file:/C:/Users/Arnav/Documents/stockmarket.owl#FullServiceBroker> rdf:type owl:Class ;
+                                                                   rdfs:subClassOf <file:/C:/Users/Arnav/Documents/stockmarket.owl#Broker> .
+
+
+###  file:/C:/Users/Arnav/Documents/stockmarket.owl#GeographicMarket
+<file:/C:/Users/Arnav/Documents/stockmarket.owl#GeographicMarket> rdf:type owl:Class .
+
+
+###  file:/C:/Users/Arnav/Documents/stockmarket.owl#HighRisk
+<file:/C:/Users/Arnav/Documents/stockmarket.owl#HighRisk> rdf:type owl:Class ;
+                                                          rdfs:subClassOf <file:/C:/Users/Arnav/Documents/stockmarket.owl#RiskLevel> .
+
+
+###  file:/C:/Users/Arnav/Documents/stockmarket.owl#HighVolatility
+<file:/C:/Users/Arnav/Documents/stockmarket.owl#HighVolatility> rdf:type owl:Class ;
+                                                                rdfs:subClassOf <file:/C:/Users/Arnav/Documents/stockmarket.owl#MarketCondition> .
+
+
+###  file:/C:/Users/Arnav/Documents/stockmarket.owl#IPO
+<file:/C:/Users/Arnav/Documents/stockmarket.owl#IPO> rdf:type owl:Class .
+
+
+###  file:/C:/Users/Arnav/Documents/stockmarket.owl#Investor
+<file:/C:/Users/Arnav/Documents/stockmarket.owl#Investor> rdf:type owl:Class ;
+                                                          owl:equivalentClass [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                                                                       owl:onProperty <file:/C:/Users/Arnav/Documents/stockmarket.owl#holdsPortfolio> ;
+                                                                                                       owl:someValuesFrom <file:/C:/Users/Arnav/Documents/stockmarket.owl#Portfolio>
+                                                                                                     ]
+                                                                                                     [ rdf:type owl:Restriction ;
+                                                                                                       owl:onProperty <file:/C:/Users/Arnav/Documents/stockmarket.owl#placesOrder> ;
+                                                                                                       owl:someValuesFrom <file:/C:/Users/Arnav/Documents/stockmarket.owl#TradeOrder>
+                                                                                                     ]
+                                                                                                   ) ;
+                                                                                rdf:type owl:Class
+                                                                              ] ,
+                                                                              [ rdf:type owl:Class ;
+                                                                                owl:unionOf ( <file:/C:/Users/Arnav/Documents/stockmarket.owl#DomesticInstitutionalInvestor>
+                                                                                              <file:/C:/Users/Arnav/Documents/stockmarket.owl#ForeignInstitutionalInvestor>
+                                                                                              <file:/C:/Users/Arnav/Documents/stockmarket.owl#RetailInvestor>
+                                                                                            )
+                                                                              ] ;
+                                                          rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                                                            owl:onProperty <file:/C:/Users/Arnav/Documents/stockmarket.owl#violatesRule> ;
+                                                                            owl:someValuesFrom <file:/C:/Users/Arnav/Documents/stockmarket.owl#ComplianceRule>
+                                                                          ] .
+
+
+###  file:/C:/Users/Arnav/Documents/stockmarket.owl#LimitOrder
+<file:/C:/Users/Arnav/Documents/stockmarket.owl#LimitOrder> rdf:type owl:Class ;
+                                                            rdfs:subClassOf <file:/C:/Users/Arnav/Documents/stockmarket.owl#TradeOrder> .
+
+
+###  file:/C:/Users/Arnav/Documents/stockmarket.owl#LongTermInvestor
+<file:/C:/Users/Arnav/Documents/stockmarket.owl#LongTermInvestor> rdf:type owl:Class ;
+                                                                  rdfs:subClassOf <file:/C:/Users/Arnav/Documents/stockmarket.owl#Investor> .
+
+
+###  file:/C:/Users/Arnav/Documents/stockmarket.owl#Loss
+<file:/C:/Users/Arnav/Documents/stockmarket.owl#Loss> rdf:type owl:Class .
+
+
+###  file:/C:/Users/Arnav/Documents/stockmarket.owl#LowRisk
+<file:/C:/Users/Arnav/Documents/stockmarket.owl#LowRisk> rdf:type owl:Class ;
+                                                         rdfs:subClassOf <file:/C:/Users/Arnav/Documents/stockmarket.owl#RiskLevel> .
+
+
+###  file:/C:/Users/Arnav/Documents/stockmarket.owl#MarginTrading
+<file:/C:/Users/Arnav/Documents/stockmarket.owl#MarginTrading> rdf:type owl:Class ;
+                                                               rdfs:subClassOf <file:/C:/Users/Arnav/Documents/stockmarket.owl#Transaction> .
+
+
+###  file:/C:/Users/Arnav/Documents/stockmarket.owl#MarketCondition
+<file:/C:/Users/Arnav/Documents/stockmarket.owl#MarketCondition> rdf:type owl:Class .
+
+
+###  file:/C:/Users/Arnav/Documents/stockmarket.owl#MarketIndex
+<file:/C:/Users/Arnav/Documents/stockmarket.owl#MarketIndex> rdf:type owl:Class .
+
+
+###  file:/C:/Users/Arnav/Documents/stockmarket.owl#MarketMaker
+<file:/C:/Users/Arnav/Documents/stockmarket.owl#MarketMaker> rdf:type owl:Class ;
+                                                             rdfs:subClassOf <file:/C:/Users/Arnav/Documents/stockmarket.owl#Broker> .
+
+
+###  file:/C:/Users/Arnav/Documents/stockmarket.owl#MarketOrder
+<file:/C:/Users/Arnav/Documents/stockmarket.owl#MarketOrder> rdf:type owl:Class ;
+                                                             rdfs:subClassOf <file:/C:/Users/Arnav/Documents/stockmarket.owl#TradeOrder> .
+
+
+###  file:/C:/Users/Arnav/Documents/stockmarket.owl#MarketTrend
+<file:/C:/Users/Arnav/Documents/stockmarket.owl#MarketTrend> rdf:type owl:Class .
+
+
+###  file:/C:/Users/Arnav/Documents/stockmarket.owl#MutualFund
+<file:/C:/Users/Arnav/Documents/stockmarket.owl#MutualFund> rdf:type owl:Class ;
+                                                            rdfs:subClassOf <file:/C:/Users/Arnav/Documents/stockmarket.owl#FinancialInstrument> .
+
+
+###  file:/C:/Users/Arnav/Documents/stockmarket.owl#Penalty
+<file:/C:/Users/Arnav/Documents/stockmarket.owl#Penalty> rdf:type owl:Class .
+
+
+###  file:/C:/Users/Arnav/Documents/stockmarket.owl#Portfolio
+<file:/C:/Users/Arnav/Documents/stockmarket.owl#Portfolio> rdf:type owl:Class ;
+                                                           rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                                                             owl:onProperty <file:/C:/Users/Arnav/Documents/stockmarket.owl#contains> ;
+                                                                             owl:someValuesFrom <file:/C:/Users/Arnav/Documents/stockmarket.owl#FinancialInstrument>
+                                                                           ] .
+
+
+###  file:/C:/Users/Arnav/Documents/stockmarket.owl#Profit
+<file:/C:/Users/Arnav/Documents/stockmarket.owl#Profit> rdf:type owl:Class .
+
+
+###  file:/C:/Users/Arnav/Documents/stockmarket.owl#PublicCompany
+<file:/C:/Users/Arnav/Documents/stockmarket.owl#PublicCompany> rdf:type owl:Class ;
+                                                               owl:equivalentClass [ owl:intersectionOf ( <file:/C:/Users/Arnav/Documents/stockmarket.owl#Company>
+                                                                                                          [ rdf:type owl:Restriction ;
+                                                                                                            owl:onProperty <file:/C:/Users/Arnav/Documents/stockmarket.owl#hasIPO> ;
+                                                                                                            owl:someValuesFrom <file:/C:/Users/Arnav/Documents/stockmarket.owl#IPO>
+                                                                                                          ]
+                                                                                                        ) ;
+                                                                                     rdf:type owl:Class
+                                                                                   ] .
+
+
+###  file:/C:/Users/Arnav/Documents/stockmarket.owl#QuarterlyDividend
+<file:/C:/Users/Arnav/Documents/stockmarket.owl#QuarterlyDividend> rdf:type owl:Class ;
+                                                                   rdfs:subClassOf <file:/C:/Users/Arnav/Documents/stockmarket.owl#Dividend> .
+
+
+###  file:/C:/Users/Arnav/Documents/stockmarket.owl#RegulatoryBody
+<file:/C:/Users/Arnav/Documents/stockmarket.owl#RegulatoryBody> rdf:type owl:Class ;
+                                                                rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                                                                  owl:onProperty <file:/C:/Users/Arnav/Documents/stockmarket.owl#enforcesRule> ;
+                                                                                  owl:someValuesFrom <file:/C:/Users/Arnav/Documents/stockmarket.owl#ComplianceRule>
+                                                                                ] .
+
+
+###  file:/C:/Users/Arnav/Documents/stockmarket.owl#RetailInvestor
+<file:/C:/Users/Arnav/Documents/stockmarket.owl#RetailInvestor> rdf:type owl:Class ;
+                                                                rdfs:subClassOf <file:/C:/Users/Arnav/Documents/stockmarket.owl#Investor> .
+
+
+###  file:/C:/Users/Arnav/Documents/stockmarket.owl#RiskLevel
+<file:/C:/Users/Arnav/Documents/stockmarket.owl#RiskLevel> rdf:type owl:Class .
+
+
+###  file:/C:/Users/Arnav/Documents/stockmarket.owl#Sector
+<file:/C:/Users/Arnav/Documents/stockmarket.owl#Sector> rdf:type owl:Class .
+
+
+###  file:/C:/Users/Arnav/Documents/stockmarket.owl#Share
+<file:/C:/Users/Arnav/Documents/stockmarket.owl#Share> rdf:type owl:Class ;
+                                                       rdfs:subClassOf <file:/C:/Users/Arnav/Documents/stockmarket.owl#FinancialInstrument> ,
+                                                                       [ rdf:type owl:Restriction ;
+                                                                         owl:onProperty <file:/C:/Users/Arnav/Documents/stockmarket.owl#issuedBy> ;
+                                                                         owl:someValuesFrom <file:/C:/Users/Arnav/Documents/stockmarket.owl#Company>
+                                                                       ] .
+
+
+###  file:/C:/Users/Arnav/Documents/stockmarket.owl#ShortSelling
+<file:/C:/Users/Arnav/Documents/stockmarket.owl#ShortSelling> rdf:type owl:Class ;
+                                                              rdfs:subClassOf <file:/C:/Users/Arnav/Documents/stockmarket.owl#Transaction> .
+
+
+###  file:/C:/Users/Arnav/Documents/stockmarket.owl#ShortTermInvestor
+<file:/C:/Users/Arnav/Documents/stockmarket.owl#ShortTermInvestor> rdf:type owl:Class ;
+                                                                   rdfs:subClassOf <file:/C:/Users/Arnav/Documents/stockmarket.owl#Investor> .
+
+
+###  file:/C:/Users/Arnav/Documents/stockmarket.owl#SidewaysTrend
+<file:/C:/Users/Arnav/Documents/stockmarket.owl#SidewaysTrend> rdf:type owl:Class ;
+                                                               rdfs:subClassOf <file:/C:/Users/Arnav/Documents/stockmarket.owl#MarketTrend> .
+
+
+###  file:/C:/Users/Arnav/Documents/stockmarket.owl#SpeculativeInvestor
+<file:/C:/Users/Arnav/Documents/stockmarket.owl#SpeculativeInvestor> rdf:type owl:Class ;
+                                                                     rdfs:subClassOf <file:/C:/Users/Arnav/Documents/stockmarket.owl#Investor> .
+
+
+###  file:/C:/Users/Arnav/Documents/stockmarket.owl#StockMarket
+<file:/C:/Users/Arnav/Documents/stockmarket.owl#StockMarket> rdf:type owl:Class .
+
+
+###  file:/C:/Users/Arnav/Documents/stockmarket.owl#StopLossOrder
+<file:/C:/Users/Arnav/Documents/stockmarket.owl#StopLossOrder> rdf:type owl:Class ;
+                                                               rdfs:subClassOf <file:/C:/Users/Arnav/Documents/stockmarket.owl#TradeOrder> .
+
+
+###  file:/C:/Users/Arnav/Documents/stockmarket.owl#SuccessfulTransaction
+<file:/C:/Users/Arnav/Documents/stockmarket.owl#SuccessfulTransaction> rdf:type owl:Class ;
+                                                                       rdfs:subClassOf <file:/C:/Users/Arnav/Documents/stockmarket.owl#Transaction> .
+
+
+###  file:/C:/Users/Arnav/Documents/stockmarket.owl#TradeOrder
+<file:/C:/Users/Arnav/Documents/stockmarket.owl#TradeOrder> rdf:type owl:Class ;
+                                                            owl:equivalentClass [ rdf:type owl:Class ;
+                                                                                  owl:unionOf ( <file:/C:/Users/Arnav/Documents/stockmarket.owl#LimitOrder>
+                                                                                                <file:/C:/Users/Arnav/Documents/stockmarket.owl#MarketOrder>
+                                                                                              )
+                                                                                ] .
+
+
+###  file:/C:/Users/Arnav/Documents/stockmarket.owl#TrailingStopOrder
+<file:/C:/Users/Arnav/Documents/stockmarket.owl#TrailingStopOrder> rdf:type owl:Class ;
+                                                                   rdfs:subClassOf <file:/C:/Users/Arnav/Documents/stockmarket.owl#TradeOrder> .
+
+
+###  file:/C:/Users/Arnav/Documents/stockmarket.owl#Transaction
+<file:/C:/Users/Arnav/Documents/stockmarket.owl#Transaction> rdf:type owl:Class .
+
+
+###  file:/C:/Users/Arnav/Documents/stockmarket.owl#UpwardTrend
+<file:/C:/Users/Arnav/Documents/stockmarket.owl#UpwardTrend> rdf:type owl:Class ;
+                                                             rdfs:subClassOf <file:/C:/Users/Arnav/Documents/stockmarket.owl#MarketTrend> .
+
+
+###  file:/C:/Users/Arnav/Documents/stockmarket.owl#ValueInvestor
+<file:/C:/Users/Arnav/Documents/stockmarket.owl#ValueInvestor> rdf:type owl:Class ;
+                                                               rdfs:subClassOf <file:/C:/Users/Arnav/Documents/stockmarket.owl#Investor> .
+
+
+###  http://www.w3.org/2002/07/owl#onProperty
+owl:onProperty rdf:type owl:Class .
+
+
+###  http://www.w3.org/2002/07/owl#someValuesFrom
+owl:someValuesFrom rdf:type owl:Class .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  file:/C:/Users/Arnav/Documents/stockmarket.owl#FI001
+<file:/C:/Users/Arnav/Documents/stockmarket.owl#FI001> rdf:type owl:NamedIndividual ,
+                                                                <file:/C:/Users/Arnav/Documents/stockmarket.owl#FinancialInstrument> ;
+                                                       <hasID> "FI001" ;
+                                                       <hasName> "XYZ Stock" ;
+                                                       <hasType> "Share" ;
+                                                       <issuedBy> <file:/C:/Users/Arnav/Documents/stockmarket.owl#XYZCorp> ;
+                                                       <trackedBy> <file:/C:/Users/Arnav/Documents/stockmarket.owl#MI001> .
+
+
+###  file:/C:/Users/Arnav/Documents/stockmarket.owl#INV001
+<file:/C:/Users/Arnav/Documents/stockmarket.owl#INV001> rdf:type owl:NamedIndividual ,
+                                                                 <file:/C:/Users/Arnav/Documents/stockmarket.owl#Investor> ;
+                                                        <engagesIn> <file:/C:/Users/Arnav/Documents/stockmarket.owl#MarginTrading> ;
+                                                        <hasID> "INV001" ;
+                                                        <hasName> "John Doe" ;
+                                                        <hasType> "RetailInvestor" ;
+                                                        <placesOrder> <file:/C:/Users/Arnav/Documents/stockmarket.owl#TO001> .
+
+
+###  file:/C:/Users/Arnav/Documents/stockmarket.owl#INV002
+<file:/C:/Users/Arnav/Documents/stockmarket.owl#INV002> rdf:type owl:NamedIndividual ,
+                                                                 <file:/C:/Users/Arnav/Documents/stockmarket.owl#Investor> ;
+                                                        <engagesIn> <file:/C:/Users/Arnav/Documents/stockmarket.owl#ShortSelling> ;
+                                                        <hasID> "INV002" ;
+                                                        <hasName> "Jane Smith" ;
+                                                        <hasType> "RetailInvestor" ;
+                                                        <placesOrder> <file:/C:/Users/Arnav/Documents/stockmarket.owl#TO002> .
+
+
+###  file:/C:/Users/Arnav/Documents/stockmarket.owl#MC001
+<file:/C:/Users/Arnav/Documents/stockmarket.owl#MC001> rdf:type owl:NamedIndividual ,
+                                                                <file:/C:/Users/Arnav/Documents/stockmarket.owl#MarketCondition> ;
+                                                       <hasID> "MC001" ;
+                                                       <hasType> "BullMarket" .
+
+
+###  file:/C:/Users/Arnav/Documents/stockmarket.owl#MI001
+<file:/C:/Users/Arnav/Documents/stockmarket.owl#MI001> rdf:type owl:NamedIndividual ,
+                                                                <file:/C:/Users/Arnav/Documents/stockmarket.owl#MarketIndex> ;
+                                                       <hasID> "MI001" ;
+                                                       <hasName> "SnP 500" ;
+                                                       <observesTrend> <file:/C:/Users/Arnav/Documents/stockmarket.owl#MT001> .
+
+
+###  file:/C:/Users/Arnav/Documents/stockmarket.owl#MT001
+<file:/C:/Users/Arnav/Documents/stockmarket.owl#MT001> rdf:type owl:NamedIndividual ,
+                                                                <file:/C:/Users/Arnav/Documents/stockmarket.owl#MarketTrend> ;
+                                                       <hasID> "MT001" ;
+                                                       <hasType> "Bullish" .
+
+
+###  file:/C:/Users/Arnav/Documents/stockmarket.owl#TO001
+<file:/C:/Users/Arnav/Documents/stockmarket.owl#TO001> rdf:type owl:NamedIndividual ,
+                                                                <file:/C:/Users/Arnav/Documents/stockmarket.owl#TradeOrder> ;
+                                                       <hasID> "TO001" ;
+                                                       <hasPrice> 120 ;
+                                                       <hasQuantity> 10 ;
+                                                       <hasType> "MarketOrder" ;
+                                                       <resultsIn> <file:/C:/Users/Arnav/Documents/stockmarket.owl#TR001> .
+
+
+###  file:/C:/Users/Arnav/Documents/stockmarket.owl#TR001
+<file:/C:/Users/Arnav/Documents/stockmarket.owl#TR001> rdf:type owl:NamedIndividual ,
+                                                                <file:/C:/Users/Arnav/Documents/stockmarket.owl#Transaction> ;
+                                                       <TransactionDate> "2024-09-28"^^xsd:date ;
+                                                       <TransactionStatus> "Complete" ;
+                                                       <hasID> "TR001" ;
+                                                       <hasType> "Buy" ;
+                                                       <occursDuring> <file:/C:/Users/Arnav/Documents/stockmarket.owl#MC001> .
+
+
+###  file:/C:/Users/Arnav/Documents/stockmarket.owl#XYZCorp
+<file:/C:/Users/Arnav/Documents/stockmarket.owl#XYZCorp> rdf:type owl:NamedIndividual ,
+                                                                  <file:/C:/Users/Arnav/Documents/stockmarket.owl#Company> ;
+                                                         <belongsToSector> "Technology" ;
+                                                         <hasID> "COM001" ;
+                                                         <hasName> "XYZ Corp" .
+
+
+[ rdf:type owl:someValuesFrom
+] .
+
+[ rdf:type owl:someValuesFrom
+ ] .
+
+[ rdf:type owl:onProperty
+ ] .
+
+[ rdf:type owl:onProperty
+ ] .
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi

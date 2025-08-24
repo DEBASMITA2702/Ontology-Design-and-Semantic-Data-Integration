@@ -1,0 +1,428 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE StockMarket [
+<!ELEMENT StockMarket (Investor+, Company+, Broker+, TradeOrder*, Transaction*,
+MarketIndex+, Penalty*, ComplianceRule*, FinancialInstrument*, MarketCondition+,
+MarketTrend*)>
+<!-- Common Elements for ID, Name, and Type -->
+<!ENTITY % commonElements "
+<!ELEMENT id (#PCDATA)>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT type (#PCDATA)>
+<!ELEMENT amount (#PCDATA)>
+<!ELEMENT date (#PCDATA)>
+">
+%commonElements;
+<!-- Investor Elements -->
+<!ELEMENT Investor (InvestorID, InvestorName, InvestorType, Portfolio, engagesIn*,
+placesOrder*)>
+<!ELEMENT InvestorID (#PCDATA)>
+<!ELEMENT InvestorName (#PCDATA)>
+<!ELEMENT InvestorType (#PCDATA)>
+<!ELEMENT Portfolio (FinancialInstrument*)>
+<!ELEMENT engagesIn (MarginTrading | ShortSelling)*>
+<!ELEMENT placesOrder (TradeOrder+)>
+<!ELEMENT MarginTrading EMPTY>
+<!ELEMENT ShortSelling EMPTY>
+<!-- Company Elements -->
+<!ELEMENT Company (CompanyID, CompanyName, issuesStock*, operatesInMarket,
+belongsToSector, paysDividend?, violatedComplianceRule?)>
+<!ELEMENT CompanyID (#PCDATA)>
+<!ELEMENT CompanyName (#PCDATA)>
+<!ELEMENT issuesStock (Share | Bond)?>
+<!ELEMENT operatesInMarket (#PCDATA)>
+<!ELEMENT belongsToSector (#PCDATA)>
+<!ELEMENT paysDividend (Dividend?)>
+<!ELEMENT Dividend (DividendAmount, DividendFrequency)>
+<!ELEMENT DividendAmount (#PCDATA)>
+<!ELEMENT DividendFrequency (#PCDATA)>
+<!ELEMENT violatedComplianceRule (ComplianceRule)?>
+<!-- Broker Elements -->
+<!ELEMENT Broker (BrokerID, BrokerName, BrokerType, facilitatesTrade*)>
+<!ELEMENT BrokerID (#PCDATA)>
+<!ELEMENT BrokerName (#PCDATA)>
+<!ELEMENT BrokerType (#PCDATA)>
+<!ELEMENT facilitatesTrade (TradeOrder+)>
+<!-- TradeOrder Elements -->
+<!ELEMENT TradeOrder (TradeOrderID, TradeOrderType, price, quantity, executedBy,
+resultsIn)>
+<!ELEMENT TradeOrderID (#PCDATA)>
+<!ELEMENT TradeOrderType (#PCDATA)>
+<!ELEMENT price (#PCDATA)>
+<!ELEMENT quantity (#PCDATA)>
+<!ELEMENT executedBy (BrokerType)>
+<!ELEMENT resultsIn (Transaction)>
+<!-- Transaction Elements -->
+<!ELEMENT Transaction (TransactionID, TransactionType, TransactionStatus,
+TransactionDate, occursDuring, belongsTo)>
+<!ELEMENT TransactionID (#PCDATA)>
+<!ELEMENT TransactionType (#PCDATA)>
+<!ELEMENT TransactionStatus (#PCDATA)>
+<!ELEMENT TransactionDate (#PCDATA)>
+<!ELEMENT occursDuring (MarketCondition)>
+<!ELEMENT belongsTo (TradeOrderID)>
+<!-- FinancialInstrument Elements -->
+<!ELEMENT FinancialInstrument (InstrumentID, InstrumentName, InstrumentType,
+issuedBy, trackedBy?, hasRisk?)>
+<!ELEMENT InstrumentID (#PCDATA)>
+<!ELEMENT InstrumentName (#PCDATA)>
+<!ELEMENT InstrumentType (#PCDATA)>
+<!ELEMENT issuedBy (CompanyName)>
+<!ELEMENT trackedBy (MarketIndex)>
+<!ELEMENT hasRisk (RiskLevel)>
+<!ELEMENT RiskLevel (#PCDATA)>
+<!-- Share, Bond, and MutualFund -->
+<!ELEMENT Share (ShareID, issuedBy)>
+<!ELEMENT ShareID (#PCDATA)>
+<!ELEMENT Bond (BondID, issuedBy)>
+<!ELEMENT BondID (#PCDATA)>
+<!ELEMENT MutualFund (FundID, FundType, issuedBy)>
+<!ELEMENT FundType (#PCDATA)>
+<!-- MarketIndex and MarketTrend -->
+<!ELEMENT MarketIndex (MarketIndexID, MarketIndexName, observesTrend*)>
+<!ELEMENT MarketIndexID (#PCDATA)>
+<!ELEMENT MarketIndexName (#PCDATA)>
+<!ELEMENT observesTrend (MarketTrend+)>
+<!-- MarketTrend -->
+<!ELEMENT MarketTrend (MarketTrendID, MarketTrendType, affects*)>
+<!ELEMENT MarketTrendID (#PCDATA)>
+<!ELEMENT MarketTrendType (#PCDATA)>
+<!ELEMENT affects (InstrumentID)>
+<!-- MarketCondition -->
+<!ELEMENT MarketCondition (MarketConditionID, MarketConditionType)>
+<!ELEMENT MarketConditionID (#PCDATA)>
+<!ELEMENT MarketConditionType (#PCDATA)>
+<!-- ComplianceRule -->
+<!ELEMENT ComplianceRule (ComplianceRuleID, ComplianceDescription)>
+<!ELEMENT ComplianceRuleID (#PCDATA)>
+<!ELEMENT ComplianceDescription (#PCDATA)>
+<!-- RegulatoryBody -->
+<!ELEMENT RegulatoryBody (RegulatoryBodyID, RegulatoryBodyName,
+enforcesRule*)>
+<!ELEMENT RegulatoryBodyID (#PCDATA)>
+<!ELEMENT RegulatoryBodyName (#PCDATA)>
+<!ELEMENT enforcesRule (ComplianceRule)>
+<!-- Penalty Definition -->
+<!ELEMENT Penalty (PenaltyID, PenaltyReason, imposedBy, PenaltyAmount,
+PenaltyDate)>
+<!ELEMENT PenaltyID (#PCDATA)>
+<!ELEMENT PenaltyReason (#PCDATA)>
+<!ELEMENT imposedBy (RegulatoryBody)>
+<!ELEMENT PenaltyAmount (#PCDATA)>
+<!ELEMENT PenaltyDate (#PCDATA)>
+]>
+<StockMarket>
+<!-- Investors -->
+<Investor>
+<InvestorID>INV001</InvestorID>
+<InvestorName>John Doe</InvestorName>
+<InvestorType>RetailInvestor</InvestorType>
+<Portfolio>
+<FinancialInstrument>
+<InstrumentID>FI001</InstrumentID>
+<InstrumentName>XYZ Stock</InstrumentName>
+<InstrumentType>Share</InstrumentType>
+<issuedBy>
+<CompanyName>XYZ Corp</CompanyName>
+</issuedBy>
+<trackedBy>
+<MarketIndex>
+<MarketIndexID>MI001</MarketIndexID>
+<MarketIndexName>SnP 500</MarketIndexName>
+<observesTrend>
+<MarketTrend>
+<MarketTrendID>MT001</MarketTrendID>
+<MarketTrendType>Bullish</MarketTrendType>
+</MarketTrend>
+</observesTrend>
+</MarketIndex>
+</trackedBy>
+<hasRisk>
+<RiskLevel>High Risk</RiskLevel>
+</hasRisk>
+</FinancialInstrument>
+<FinancialInstrument>
+<InstrumentID>FI002</InstrumentID>
+<InstrumentName>ABC Bond</InstrumentName>
+<InstrumentType>Bond</InstrumentType>
+<issuedBy>
+<CompanyName>ABC Corp</CompanyName>
+</issuedBy>
+<hasRisk>
+<RiskLevel>Low Risk</RiskLevel>
+</hasRisk>
+</FinancialInstrument>
+</Portfolio>
+<engagesIn>
+<MarginTrading/>
+</engagesIn>
+<placesOrder>
+<TradeOrder>
+<TradeOrderID>TO001</TradeOrderID>
+<TradeOrderType>MarketOrder</TradeOrderType>
+<price>120</price>
+<quantity>10</quantity>
+<executedBy>
+<BrokerType>DiscountBroker</BrokerType>
+</executedBy>
+<resultsIn>
+<Transaction>
+<TransactionID>TR001</TransactionID>
+<TransactionType>Buy</TransactionType>
+<TransactionStatus>Complete</TransactionStatus>
+<TransactionDate>2024-09-28</TransactionDate>
+<occursDuring>
+<MarketCondition>
+<MarketConditionID>MC001</MarketConditionID>
+<MarketConditionType>BullMarket</MarketConditionType>
+</MarketCondition>
+</occursDuring>
+<belongsTo>
+<TradeOrderID>TO001</TradeOrderID>
+</belongsTo>
+</Transaction>
+</resultsIn>
+</TradeOrder>
+</placesOrder>
+</Investor>
+<Investor>
+<InvestorID>INV002</InvestorID>
+<InvestorName>Jane Smith</InvestorName>
+<InvestorType>RetailInvestor</InvestorType>
+<Portfolio>
+<FinancialInstrument>
+<InstrumentID>FI003</InstrumentID>
+<InstrumentName>Tech Fund</InstrumentName>
+<InstrumentType>MutualFund</InstrumentType>
+<issuedBy>
+<CompanyName>Tech Innovations</CompanyName>
+</issuedBy>
+<trackedBy>
+<MarketIndex>
+<MarketIndexID>MI002</MarketIndexID>
+<MarketIndexName>NASDAQ</MarketIndexName>
+</MarketIndex>
+</trackedBy>
+<hasRisk>
+<RiskLevel>Medium Risk</RiskLevel>
+</hasRisk>
+</FinancialInstrument>
+<FinancialInstrument>
+<InstrumentID>FI004</InstrumentID>
+<InstrumentName>Green Energy Bond</InstrumentName>
+<InstrumentType>Bond</InstrumentType>
+<issuedBy>
+<CompanyName>Green Energy Corp</CompanyName>
+</issuedBy>
+<hasRisk>
+<RiskLevel>Low Risk</RiskLevel>
+</hasRisk>
+</FinancialInstrument>
+</Portfolio>
+<engagesIn>
+<ShortSelling/>
+</engagesIn>
+<placesOrder>
+<TradeOrder>
+<TradeOrderID>TO002</TradeOrderID>
+<TradeOrderType>LimitOrder</TradeOrderType>
+<price>130</price>
+<quantity>20</quantity>
+<executedBy>
+<BrokerType>OnlineBroker</BrokerType>
+</executedBy>
+<resultsIn>
+<Transaction>
+<TransactionID>TR002</TransactionID>
+<TransactionType>Sell</TransactionType>
+<TransactionStatus>Pending</TransactionStatus>
+<TransactionDate>2024-09-29</TransactionDate>
+<occursDuring>
+<MarketCondition>
+<MarketConditionID>MC002</MarketConditionID>
+<MarketConditionType>BearMarket</MarketConditionType>
+</MarketCondition>
+</occursDuring>
+<belongsTo>
+<TradeOrderID>TO002</TradeOrderID>
+</belongsTo>
+</Transaction>
+</resultsIn>
+</TradeOrder>
+</placesOrder>
+</Investor>
+<!-- Companies -->
+<Company>
+<CompanyID>COM001</CompanyID>
+<CompanyName>XYZ Corp</CompanyName>
+<issuesStock>
+<Share>
+<ShareID>S001</ShareID>
+<issuedBy>
+<CompanyName>Company X</CompanyName>
+</issuedBy>
+</Share>
+</issuesStock>
+<operatesInMarket>Stock Market</operatesInMarket>
+<belongsToSector>Technology</belongsToSector>
+<paysDividend>
+<Dividend>
+<DividendAmount>1.5</DividendAmount>
+<DividendFrequency>Quarterly</DividendFrequency>
+</Dividend>
+</paysDividend>
+</Company>
+<Company>
+<CompanyID>COM002</CompanyID>
+<CompanyName>ABC Corp</CompanyName>
+<issuesStock>
+<Share>
+<ShareID>S002</ShareID>
+<issuedBy>
+<CompanyName>Company Z</CompanyName>
+</issuedBy>
+</Share>
+</issuesStock>
+<operatesInMarket>Bond Market</operatesInMarket>
+<belongsToSector>Finance</belongsToSector>
+</Company>
+<Company>
+<CompanyID>COM003</CompanyID>
+<CompanyName>Green Energy Corp</CompanyName>
+<issuesStock>
+<Bond>
+<BondID>B002</BondID>
+<issuedBy>
+<CompanyName>COmpany A</CompanyName>
+</issuedBy>
+</Bond>
+</issuesStock>
+<operatesInMarket>Stock Market</operatesInMarket>
+<belongsToSector>Energy</belongsToSector>
+<paysDividend>
+<Dividend>
+<DividendAmount>2.0</DividendAmount>
+<DividendFrequency>Annually</DividendFrequency>
+</Dividend>
+</paysDividend>
+</Company>
+<!-- Brokers -->
+<Broker>
+<BrokerID>BROKER001</BrokerID>
+<BrokerName>Alpha Broker</BrokerName>
+<BrokerType>FullServiceBroker</BrokerType>
+<facilitatesTrade>
+<TradeOrder>
+<TradeOrderID>TO003</TradeOrderID>
+<TradeOrderType>MarketOrder</TradeOrderType>
+<price>100</price>
+<quantity>15</quantity>
+<executedBy>
+<BrokerType>FullServiceBroker</BrokerType>
+</executedBy>
+<resultsIn>
+<Transaction>
+<TransactionID>TR003</TransactionID>
+<TransactionType>Buy</TransactionType>
+<TransactionStatus>Complete</TransactionStatus>
+<TransactionDate>2024-09-30</TransactionDate>
+<occursDuring>
+<MarketCondition>
+<MarketConditionID>MC003</MarketConditionID>
+<MarketConditionType>NeutralMarket</MarketConditionType>
+</MarketCondition>
+</occursDuring>
+<belongsTo>
+<TradeOrderID>TO003</TradeOrderID>
+</belongsTo>
+</Transaction>
+</resultsIn>
+</TradeOrder>
+</facilitatesTrade>
+</Broker>
+<Broker>
+<BrokerID>BROKER002</BrokerID>
+<BrokerName>Beta Broker</BrokerName>
+<BrokerType>DiscountBroker</BrokerType>
+<facilitatesTrade>
+<TradeOrder>
+<TradeOrderID>TO004</TradeOrderID>
+<TradeOrderType>LimitOrder</TradeOrderType>
+<price>110</price>
+<quantity>5</quantity>
+<executedBy>
+<BrokerType>DiscountBroker</BrokerType>
+</executedBy>
+<resultsIn>
+<Transaction>
+<TransactionID>TR004</TransactionID>
+<TransactionType>Sell</TransactionType>
+<TransactionStatus>Pending</TransactionStatus>
+<TransactionDate>2024-09-29</TransactionDate>
+<occursDuring>
+<MarketCondition>
+<MarketConditionID>MC004</MarketConditionID>
+<MarketConditionType>BearMarket</MarketConditionType>
+</MarketCondition>
+</occursDuring>
+<belongsTo>
+<TradeOrderID>TO004</TradeOrderID>
+</belongsTo>
+</Transaction>
+</resultsIn>
+</TradeOrder>
+</facilitatesTrade>
+</Broker>
+<!-- Market Index -->
+<MarketIndex>
+<MarketIndexID>MI001</MarketIndexID>
+<MarketIndexName>SnP 500</MarketIndexName>
+<observesTrend>
+<MarketTrend>
+<MarketTrendID>MT001</MarketTrendID>
+<MarketTrendType>Upward</MarketTrendType>
+</MarketTrend>
+</observesTrend>
+</MarketIndex>
+<MarketIndex>
+<MarketIndexID>MI002</MarketIndexID>
+<MarketIndexName>NASDAQ</MarketIndexName>
+<observesTrend>
+<MarketTrend>
+<MarketTrendID>MT002</MarketTrendID>
+<MarketTrendType>Downward</MarketTrendType>
+</MarketTrend>
+</observesTrend>
+</MarketIndex>
+<!-- Penalties -->
+<Penalty>
+<PenaltyID>PEN001</PenaltyID>
+<PenaltyReason>Violation of SEC regulations.</PenaltyReason>
+<imposedBy>
+<RegulatoryBody>
+<RegulatoryBodyID>RB001</RegulatoryBodyID>
+<RegulatoryBodyName>SEC</RegulatoryBodyName>
+</RegulatoryBody>
+</imposedBy>
+<PenaltyAmount>5000</PenaltyAmount>
+<PenaltyDate>2024-08-15</PenaltyDate>
+</Penalty>
+<!-- Compliance Rules -->
+<ComplianceRule>
+<ComplianceRuleID>CR001</ComplianceRuleID>
+<ComplianceDescription>All brokers must comply with SEC
+regulations.</ComplianceDescription>
+</ComplianceRule>
+<!-- Market Conditions -->
+<MarketCondition>
+<MarketConditionID>MC001</MarketConditionID>
+<MarketConditionType>BullMarket</MarketConditionType>
+</MarketCondition>
+<MarketCondition>
+<MarketConditionID>MC002</MarketConditionID>
+<MarketConditionType>BearMarket</MarketConditionType>
+</MarketCondition>
+<MarketCondition>
+<MarketConditionID>MC003</MarketConditionID>
+<MarketConditionType>NeutralMarket</MarketConditionType>
+</MarketCondition>
+</StockMarket>
