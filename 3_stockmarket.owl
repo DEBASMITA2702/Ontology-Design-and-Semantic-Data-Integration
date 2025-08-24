@@ -1,0 +1,611 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE rdf:RDF [
+  <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#">
+  <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+  <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#">
+  <!ENTITY owl "http://www.w3.org/2002/07/owl#">
+]>
+
+<rdf:RDF
+  xmlns:xsd="&xsd;"
+  xmlns:rdf="&rdf;"
+  xmlns:rdfs="&rdfs;"
+  xmlns:owl="&owl;"
+>
+     
+    <!-- Classes -->
+	<owl:Class rdf:ID="StockMarket"/>
+
+    <!-- Company -->
+    <owl:Class rdf:ID="Company"/>
+
+    <!-- FinancialInstrument and its subclasses -->
+    <owl:Class rdf:ID="FinancialInstrument"/>
+    <owl:Class rdf:ID="Share">
+        <rdfs:subClassOf rdf:resource="#FinancialInstrument"/>
+    </owl:Class>
+    <owl:Class rdf:ID="Bond">
+        <rdfs:subClassOf rdf:resource="#FinancialInstrument"/>
+    </owl:Class>
+    <owl:Class rdf:ID="MutualFund">
+        <rdfs:subClassOf rdf:resource="#FinancialInstrument"/>
+    </owl:Class>
+    <owl:Class rdf:ID="BalancedMutualFund">
+        <rdfs:subClassOf rdf:resource="#MutualFund"/>
+    </owl:Class>
+    <owl:Class rdf:ID="ELSSFund">
+        <rdfs:subClassOf rdf:resource="#MutualFund"/>
+    </owl:Class>
+    <owl:Class rdf:ID="DebtFund">
+        <rdfs:subClassOf rdf:resource="#MutualFund"/>
+    </owl:Class>
+
+    <!-- Investor and its subclasses -->
+    <owl:Class rdf:ID="Investor"/>
+    <owl:Class rdf:ID="RetailInvestor">
+        <rdfs:subClassOf rdf:resource="#Investor"/>
+    </owl:Class>
+    <owl:Class rdf:ID="DomesticInstitutionalInvestor">
+        <rdfs:subClassOf rdf:resource="#Investor"/>
+    </owl:Class>
+    <owl:Class rdf:ID="ForeignInstitutionalInvestor">
+        <rdfs:subClassOf rdf:resource="#Investor"/>
+    </owl:Class>
+    <owl:Class rdf:ID="ShortTermInvestor">
+        <rdfs:subClassOf rdf:resource="#Investor"/>
+    </owl:Class>
+    <owl:Class rdf:ID="LongTermInvestor">
+        <rdfs:subClassOf rdf:resource="#Investor"/>
+    </owl:Class>
+    <owl:Class rdf:ID="SpeculativeInvestor">
+        <rdfs:subClassOf rdf:resource="#Investor"/>
+    </owl:Class>
+    <owl:Class rdf:ID="ValueInvestor">
+        <rdfs:subClassOf rdf:resource="#Investor"/>
+    </owl:Class>
+
+    <!-- TradeOrder and its subclasses -->
+    <owl:Class rdf:ID="TradeOrder"/>
+    <owl:Class rdf:ID="MarketOrder">
+        <rdfs:subClassOf rdf:resource="#TradeOrder"/>
+    </owl:Class>
+    <owl:Class rdf:ID="LimitOrder">
+        <rdfs:subClassOf rdf:resource="#TradeOrder"/>
+    </owl:Class>
+    <owl:Class rdf:ID="StopLossOrder">
+        <rdfs:subClassOf rdf:resource="#TradeOrder"/>
+    </owl:Class>
+    <owl:Class rdf:ID="TrailingStopOrder">
+        <rdfs:subClassOf rdf:resource="#TradeOrder"/>
+    </owl:Class>
+
+    <!-- Transaction and its subclasses -->
+    <owl:Class rdf:ID="Transaction"/>
+    <owl:Class rdf:ID="FailedTransaction">
+        <rdfs:subClassOf rdf:resource="#Transaction"/>
+    </owl:Class>
+    <owl:Class rdf:ID="SuccessfulTransaction">
+        <rdfs:subClassOf rdf:resource="#Transaction"/>
+    </owl:Class>
+    <owl:Class rdf:ID="MarginTrading">
+        <rdfs:subClassOf rdf:resource="#Transaction"/>
+    </owl:Class>
+    <owl:Class rdf:ID="ShortSelling">
+        <rdfs:subClassOf rdf:resource="#Transaction"/>
+    </owl:Class>
+
+    <!-- Broker and its subclasses -->
+    <owl:Class rdf:ID="Broker"/>
+    <owl:Class rdf:ID="MarketMaker">
+        <rdfs:subClassOf rdf:resource="#Broker"/>
+    </owl:Class>
+    <owl:Class rdf:ID="DiscountBroker">
+        <rdfs:subClassOf rdf:resource="#Broker"/>
+    </owl:Class>
+    <owl:Class rdf:ID="FullServiceBroker">
+        <rdfs:subClassOf rdf:resource="#Broker"/>
+    </owl:Class>
+
+    <!-- MarketIndex -->
+    <owl:Class rdf:ID="MarketIndex"/>
+
+    <!-- PublicCompany -->
+    <owl:Class rdf:ID="PublicCompany"/>
+
+    <!-- IPO -->
+    <owl:Class rdf:ID="IPO"/>
+
+    <!-- MarketTrend and its subclasses -->
+    <owl:Class rdf:ID="MarketTrend"/>
+    <owl:Class rdf:ID="UpwardTrend">
+        <rdfs:subClassOf rdf:resource="#MarketTrend"/>
+    </owl:Class>
+    <owl:Class rdf:ID="DownwardTrend">
+        <rdfs:subClassOf rdf:resource="#MarketTrend"/>
+    </owl:Class>
+    <owl:Class rdf:ID="SidewaysTrend">
+        <rdfs:subClassOf rdf:resource="#MarketTrend"/>
+    </owl:Class>
+
+    <!-- RegulatoryBody -->
+    <owl:Class rdf:ID="RegulatoryBody"/>
+
+    <!-- ComplianceRule -->
+    <owl:Class rdf:ID="ComplianceRule"/>
+
+    <!-- Penalty -->
+    <owl:Class rdf:ID="Penalty"/>
+
+    <!-- Portfolio -->
+    <owl:Class rdf:ID="Portfolio"/>
+
+    <!-- RiskLevel and its subclasses -->
+    <owl:Class rdf:ID="RiskLevel"/>
+    <owl:Class rdf:ID="HighRisk">
+        <rdfs:subClassOf rdf:resource="#RiskLevel"/>
+    </owl:Class>
+    <owl:Class rdf:ID="LowRisk">
+        <rdfs:subClassOf rdf:resource="#RiskLevel"/>
+    </owl:Class>
+
+    <!-- MarketCondition and its subclasses -->
+    <owl:Class rdf:ID="MarketCondition"/>
+    <owl:Class rdf:ID="BullMarket">
+        <rdfs:subClassOf rdf:resource="#MarketCondition"/>
+    </owl:Class>
+    <owl:Class rdf:ID="BearMarket">
+        <rdfs:subClassOf rdf:resource="#MarketCondition"/>
+    </owl:Class>
+    <owl:Class rdf:ID="HighVolatility">
+        <rdfs:subClassOf rdf:resource="#MarketCondition"/>
+    </owl:Class>
+
+    <!-- Dividend and its subclasses -->
+    <owl:Class rdf:ID="Dividend"/>
+    <owl:Class rdf:ID="QuarterlyDividend">
+        <rdfs:subClassOf rdf:resource="#Dividend"/>
+    </owl:Class>
+    <owl:Class rdf:ID="AnnualDividend">
+        <rdfs:subClassOf rdf:resource="#Dividend"/>
+    </owl:Class>
+
+    <!-- Profit -->
+    <owl:Class rdf:ID="Profit"/>
+
+    <!-- Loss -->
+    <owl:Class rdf:ID="Loss"/>
+
+
+
+  <!-- Properties -->
+
+  <!-- hasInvestor: StockMarket → Investor -->
+  <owl:ObjectProperty rdf:ID="hasInvestor">
+    <rdfs:domain rdf:resource="#StockMarket"/>
+    <rdfs:range rdf:resource="#Investor"/>
+  </owl:ObjectProperty>
+
+  <!-- issuesStock: Company → Share -->
+  <owl:ObjectProperty rdf:ID="issuesStock">
+    <rdfs:domain rdf:resource="#Company"/>
+    <rdfs:range rdf:resource="#Share"/>
+  </owl:ObjectProperty>
+
+  <!-- facilitatesTrade: Broker → TradeOrder -->
+  <owl:ObjectProperty rdf:ID="facilitatesTrade">
+    <rdfs:domain rdf:resource="#Broker"/>
+    <rdfs:range rdf:resource="#TradeOrder"/>
+  </owl:ObjectProperty>
+
+  <!-- placesOrder: Investor → TradeOrder -->
+  <owl:ObjectProperty rdf:ID="placesOrder">
+    <rdfs:domain rdf:resource="#Investor"/>
+    <rdfs:range rdf:resource="#TradeOrder"/>
+  </owl:ObjectProperty>
+
+  <!-- executesTransaction: TradeOrder → Transaction -->
+  <owl:ObjectProperty rdf:ID="executesTransaction">
+    <rdfs:domain rdf:resource="#TradeOrder"/>
+    <rdfs:range rdf:resource="#Transaction"/>
+  </owl:ObjectProperty>
+
+  <!-- isTradedAt: FinancialInstrument → StockMarket -->
+  <owl:ObjectProperty rdf:ID="isTradedAt">
+    <rdfs:domain rdf:resource="#FinancialInstrument"/>
+    <rdfs:range rdf:resource="#StockMarket"/>
+  </owl:ObjectProperty>
+
+  <!-- trackedBy: FinancialInstrument → MarketIndex -->
+  <owl:ObjectProperty rdf:ID="trackedBy">
+    <rdfs:domain rdf:resource="#FinancialInstrument"/>
+    <rdfs:range rdf:resource="#MarketIndex"/>
+  </owl:ObjectProperty>
+
+  <!-- observesTrend: MarketIndex → MarketTrend -->
+  <owl:ObjectProperty rdf:ID="observesTrend">
+    <rdfs:domain rdf:resource="#MarketIndex"/>
+    <rdfs:range rdf:resource="#MarketTrend"/>
+  </owl:ObjectProperty>
+
+  <!-- paysDividend: Company → Dividend -->
+  <owl:ObjectProperty rdf:ID="paysDividend">
+    <rdfs:domain rdf:resource="#Company"/>
+    <rdfs:range rdf:resource="#Dividend"/>
+  </owl:ObjectProperty>
+
+  <!-- earnsProfit: Investor → Profit -->
+  <owl:ObjectProperty rdf:ID="earnsProfit">
+    <rdfs:domain rdf:resource="#Investor"/>
+    <rdfs:range rdf:resource="#Profit"/>
+  </owl:ObjectProperty>
+
+  <!-- suffersLoss: Investor → Loss -->
+  <owl:ObjectProperty rdf:ID="suffersLoss">
+    <rdfs:domain rdf:resource="#Investor"/>
+    <rdfs:range rdf:resource="#Loss"/>
+  </owl:ObjectProperty>
+
+  <!-- hasPrice: TradeOrder → Price -->
+  <owl:DatatypeProperty rdf:ID="hasPrice">
+    <rdfs:domain rdf:resource="#TradeOrder"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+  </owl:DatatypeProperty>
+
+  <!-- hasDate: Transaction → Date -->
+  <owl:DatatypeProperty rdf:ID="hasDate">
+    <rdfs:domain rdf:resource="#Transaction"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+  </owl:DatatypeProperty>
+
+  <!-- issuedBy: FinancialInstrument → Company -->
+  <owl:ObjectProperty rdf:ID="issuedBy">
+    <rdfs:domain rdf:resource="#FinancialInstrument"/>
+    <rdfs:range rdf:resource="#Company"/>
+  </owl:ObjectProperty>
+
+  <!-- hasIPO: PublicCompany → IPO -->
+  <owl:ObjectProperty rdf:ID="hasIPO">
+    <rdfs:domain rdf:resource="#PublicCompany"/>
+    <rdfs:range rdf:resource="#IPO"/>
+  </owl:ObjectProperty>
+
+  <!-- resultsIn: TradeOrder → Transaction -->
+  <owl:ObjectProperty rdf:ID="resultsIn">
+    <rdfs:domain rdf:resource="#TradeOrder"/>
+    <rdfs:range rdf:resource="#Transaction"/>
+  </owl:ObjectProperty>
+
+  <!-- violatesRule: Investor/Company/Broker → ComplianceRule -->
+  <owl:ObjectProperty rdf:ID="violatesRule">
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="#Investor"/>
+          <rdf:Description rdf:about="#Company"/>
+          <rdf:Description rdf:about="#Broker"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:range rdf:resource="#ComplianceRule"/>
+  </owl:ObjectProperty>
+
+  <!-- enforcesRule: RegulatoryBody → ComplianceRule -->
+  <owl:ObjectProperty rdf:ID="enforcesRule">
+    <rdfs:domain rdf:resource="#RegulatoryBody"/>
+    <rdfs:range rdf:resource="#ComplianceRule"/>
+  </owl:ObjectProperty>
+
+  <!-- imposesPenalty: RegulatoryBody → Penalty -->
+  <owl:ObjectProperty rdf:ID="imposesPenalty">
+    <rdfs:domain rdf:resource="#RegulatoryBody"/>
+    <rdfs:range rdf:resource="#Penalty"/>
+  </owl:ObjectProperty>
+
+  <!-- penalizes: Penalty → Investor/Company/Broker -->
+  <owl:ObjectProperty rdf:ID="penalizes">
+    <rdfs:domain rdf:resource="#Penalty"/>
+    <rdfs:range>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="#Investor"/>
+          <rdf:Description rdf:about="#Company"/>
+          <rdf:Description rdf:about="#Broker"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:range>
+  </owl:ObjectProperty>
+
+  <!-- holdsPortfolio: Investor → Portfolio -->
+  <owl:ObjectProperty rdf:ID="holdsPortfolio">
+    <rdfs:domain rdf:resource="#Investor"/>
+    <rdfs:range rdf:resource="#Portfolio"/>
+  </owl:ObjectProperty>
+
+  <!-- contains: Portfolio → FinancialInstrument -->
+  <owl:ObjectProperty rdf:ID="contains">
+    <rdfs:domain rdf:resource="#Portfolio"/>
+    <rdfs:range rdf:resource="#FinancialInstrument"/>
+  </owl:ObjectProperty>
+
+  <!-- engagesIn: Investor → MarginTrading/ShortSelling -->
+  <owl:ObjectProperty rdf:ID="engagesIn">
+    <rdfs:domain rdf:resource="#Investor"/>
+    <rdfs:range>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <rdf:Description rdf:about="#MarginTrading"/>
+          <rdf:Description rdf:about="#ShortSelling"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:range>
+  </owl:ObjectProperty>
+
+  <!-- hasRisk: FinancialInstrument → RiskLevel -->
+  <owl:ObjectProperty rdf:ID="hasRisk">
+    <rdfs:domain rdf:resource="#FinancialInstrument"/>
+    <rdfs:range rdf:resource="#RiskLevel"/>
+  </owl:ObjectProperty>
+
+  <!-- occursDuring: Transaction → MarketCondition -->
+  <owl:ObjectProperty rdf:ID="occursDuring">
+    <rdfs:domain rdf:resource="#Transaction"/>
+    <rdfs:range rdf:resource="#MarketCondition"/>
+  </owl:ObjectProperty>
+
+  <!-- belongsToSector: Company → Sector -->
+  <owl:ObjectProperty rdf:ID="belongsToSector">
+    <rdfs:domain rdf:resource="#Company"/>
+    <rdfs:range rdf:resource="#Sector"/>
+  </owl:ObjectProperty>
+
+  <!-- operatesInMarket: Company → GeographicMarket -->
+  <owl:ObjectProperty rdf:ID="operatesInMarket">
+    <rdfs:domain rdf:resource="#Company"/>
+    <rdfs:range rdf:resource="#GeographicMarket"/>
+  </owl:ObjectProperty>
+  
+  
+  <!-- Axioms -->
+  <!-- Axiom: Every company issues at least one share -->
+  <owl:Class rdf:about="#Company">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#issuesStock"/>
+        <owl:someValuesFrom rdf:resource="#Share"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  
+   <!-- Axiom: Every investor is either a retail investor, DII, or FII -->
+  <owl:Class rdf:about="#Investor">
+    <!-- <rdfs:subClassOf> -->
+      <owl:unionOf rdf:parseType="Collection">
+        <owl:Class rdf:about="#RetailInvestor"/>
+        <owl:Class rdf:about="#DomesticInstitutionalInvestor"/>
+        <owl:Class rdf:about="#ForeignInstitutionalInvestor"/>
+      </owl:unionOf>
+    <!-- </rdfs:subClassOf> -->
+  </owl:Class>
+  
+  
+    <!-- Axiom: Every trade order is either a market order or a limit order -->
+  <owl:Class rdf:about="#TradeOrder">
+    <!-- <rdfs:subClassOf> -->
+      <owl:unionOf rdf:parseType="Collection">
+        <owl:Class rdf:about="#MarketOrder"/>
+        <owl:Class rdf:about="#LimitOrder"/>
+      </owl:unionOf>
+    <!-- </rdfs:subClassOf> -->
+  </owl:Class>
+  
+    <!-- Axiom: A public company is a company that has had an IPO -->
+  <owl:Class rdf:about="#PublicCompany">
+    <!-- <rdfs:subClassOf> -->
+      <owl:intersectionOf rdf:parseType="Collection">
+        <owl:Class rdf:about="#Company"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasIPO"/>
+          <owl:someValuesFrom rdf:resource="#IPO"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    <!-- </rdfs:subClassOf> -->
+  </owl:Class>
+  
+    <!-- Axiom: Every share is issued by some company -->
+  <owl:Class rdf:about="#Share">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#issuedBy"/>
+        <owl:someValuesFrom rdf:resource="#Company"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  
+    <!-- Axiom: Every investor places at least one trade order and holds a portfolio -->
+  <owl:Class rdf:about="#Investor">
+    <!-- <rdfs:subClassOf> -->
+      <owl:intersectionOf rdf:parseType="Collection">
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#placesOrder"/>
+          <owl:someValuesFrom rdf:resource="#TradeOrder"/>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#holdsPortfolio"/>
+          <owl:someValuesFrom rdf:resource="#Portfolio"/>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    <!-- </rdfs:subClassOf> -->
+  </owl:Class>
+  
+    <!-- Axiom: Every financial instrument is tracked by at least one market index and has a risk level -->
+  <owl:Class rdf:about="#FinancialInstrument">
+    <!-- <rdfs:subClassOf> -->
+      <owl:unionOf rdf:parseType="Collection">
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#trackedBy"/>
+          <owl:someValuesFrom rdf:resource="#MarketIndex"/>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#hasRisk"/>
+          <owl:someValuesFrom rdf:resource="#RiskLevel"/>
+        </owl:Restriction>
+      </owl:unionOf>
+    <!-- </rdfs:subClassOf> -->
+  </owl:Class>
+  
+    <!-- Axiom: A company may or may not pay dividends -->
+  <owl:Class rdf:about="#Company">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#paysDividend"/>
+        <owl:someValuesFrom rdf:resource="#Dividend"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  
+    <!-- Axiom: Every portfolio contains financial instruments -->
+  <owl:Class rdf:about="#Portfolio">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#contains"/>
+        <owl:someValuesFrom rdf:resource="#FinancialInstrument"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  
+    <!-- Axiom: Every regulatory body enforces at least one compliance rule -->
+  <owl:Class rdf:about="#RegulatoryBody">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#enforcesRule"/>
+        <owl:someValuesFrom rdf:resource="#ComplianceRule"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  
+    <!-- Axiom: A penalty is imposed on an investor, company, or broker -->
+  <owl:Class rdf:about="#Penalty">
+    <!-- <rdfs:subClassOf> -->
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#penalizes"/>
+        <owl:someValuesFrom>
+          <owl:unionOf rdf:parseType="Collection">
+            <owl:Class rdf:about="#Investor"/>
+            <owl:Class rdf:about="#Company"/>
+            <owl:Class rdf:about="#Broker"/>
+          </owl:unionOf>
+        </owl:someValuesFrom>
+      </owl:Restriction>
+    <!-- </rdfs:subClassOf> -->
+  </owl:Class>
+  
+  
+    <!-- Axiom: An investor may violate a compliance rule -->
+  <owl:Class rdf:about="#Investor">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#violatesRule"/>
+        <owl:someValuesFrom rdf:resource="#ComplianceRule"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  
+    <!-- Axiom: Every trade order results in either a successful or failed transaction -->
+  <owl:Class rdf:about="#TradeOrder">
+    <!-- <rdfs:subClassOf> -->
+      <owl:Restriction>
+        <owl:onProperty rdf:resource="#resultsIn"/>
+        <owl:someValuesFrom>
+          <owl:unionOf rdf:parseType="Collection">
+            <owl:Class rdf:about="#SuccessfulTransaction"/>
+            <owl:Class rdf:about="#FailedTransaction"/>
+          </owl:unionOf>
+        </owl:someValuesFrom>
+      </owl:Restriction>
+    <!-- </rdfs:subClassOf> -->
+  </owl:Class>
+  
+
+    <!-- Example Individuals -->
+    
+    <!-- Investor: John Doe -->
+    <owl:NamedIndividual rdf:about="#INV001">
+        <rdf:type rdf:resource="#Investor"/>
+        <hasID rdf:datatype="&xsd;string">INV001</hasID>
+        <hasName rdf:datatype="&xsd;string">John Doe</hasName>
+        <hasType rdf:datatype="&xsd;string">RetailInvestor</hasType>
+        <engagesIn rdf:resource="#MarginTrading"/>
+        <placesOrder rdf:resource="#TO001"/>
+    </owl:NamedIndividual>
+
+    <!-- Investor: Jane Smith -->
+    <owl:NamedIndividual rdf:about="#INV002">
+        <rdf:type rdf:resource="#Investor"/>
+        <hasID rdf:datatype="&xsd;string">INV002</hasID>
+        <hasName rdf:datatype="&xsd;string">Jane Smith</hasName>
+        <hasType rdf:datatype="&xsd;string">RetailInvestor</hasType>
+        <engagesIn rdf:resource="#ShortSelling"/>
+        <placesOrder rdf:resource="#TO002"/>
+    </owl:NamedIndividual>
+
+    <!-- Company: XYZ Corp -->
+    <owl:NamedIndividual rdf:about="#XYZCorp">
+        <rdf:type rdf:resource="#Company"/>
+        <hasID rdf:datatype="&xsd;string">COM001</hasID>
+        <hasName rdf:datatype="&xsd;string">XYZ Corp</hasName>
+        <belongsToSector rdf:datatype="&xsd;string">Technology</belongsToSector>
+    </owl:NamedIndividual>
+
+    <!-- Financial Instrument: XYZ Stock -->
+    <owl:NamedIndividual rdf:about="#FI001">
+        <rdf:type rdf:resource="#FinancialInstrument"/>
+        <hasID rdf:datatype="&xsd;string">FI001</hasID>
+        <hasName rdf:datatype="&xsd;string">XYZ Stock</hasName>
+        <hasType rdf:datatype="&xsd;string">Share</hasType>
+        <issuedBy rdf:resource="#XYZCorp"/>
+        <trackedBy rdf:resource="#MI001"/>
+    </owl:NamedIndividual>
+
+    <!-- Market Index: SnP 500 -->
+    <owl:NamedIndividual rdf:about="#MI001">
+        <rdf:type rdf:resource="#MarketIndex"/>
+        <hasID rdf:datatype="&xsd;string">MI001</hasID>
+        <hasName rdf:datatype="&xsd;string">SnP 500</hasName>
+        <observesTrend rdf:resource="#MT001"/>
+    </owl:NamedIndividual>
+
+    <!-- Market Trend: Bullish -->
+    <owl:NamedIndividual rdf:about="#MT001">
+        <rdf:type rdf:resource="#MarketTrend"/>
+        <hasID rdf:datatype="&xsd;string">MT001</hasID>
+        <hasType rdf:datatype="&xsd;string">Bullish</hasType>
+    </owl:NamedIndividual>
+
+    <!-- Trade Order: TO001 -->
+    <owl:NamedIndividual rdf:about="#TO001">
+        <rdf:type rdf:resource="#TradeOrder"/>
+        <hasID rdf:datatype="&xsd;string">TO001</hasID>
+        <hasType rdf:datatype="&xsd;string">MarketOrder</hasType>
+        <hasPrice rdf:datatype="&xsd;decimal">120</hasPrice>
+        <hasQuantity rdf:datatype="&xsd;integer">10</hasQuantity>
+        <resultsIn rdf:resource="#TR001"/>
+    </owl:NamedIndividual>
+
+    <!-- Transaction: TR001 -->
+    <owl:NamedIndividual rdf:about="#TR001">
+        <rdf:type rdf:resource="#Transaction"/>
+        <hasID rdf:datatype="&xsd;string">TR001</hasID>
+        <hasType rdf:datatype="&xsd;string">Buy</hasType>
+        <TransactionStatus rdf:datatype="&xsd;string">Complete</TransactionStatus>
+        <TransactionDate rdf:datatype="&xsd;date">2024-09-28</TransactionDate>
+        <occursDuring rdf:resource="#MC001"/>
+    </owl:NamedIndividual>
+
+    <!-- Market Condition: Bull Market -->
+    <owl:NamedIndividual rdf:about="#MC001">
+        <rdf:type rdf:resource="#MarketCondition"/>
+        <hasID rdf:datatype="&xsd;string">MC001</hasID>
+        <hasType rdf:datatype="&xsd;string">BullMarket</hasType>
+    </owl:NamedIndividual>
+    
+</rdf:RDF>
